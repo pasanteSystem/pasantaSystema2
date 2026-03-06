@@ -3,13 +3,15 @@ session_start();
 
 // 1. TODA LA LÓGICA ANTES DEL HTML
 if (isset($_POST['listo'])) {
-    $host = getenv('MYSQLHOST');
+    // Railway usa estos nombres por defecto (sin el guion bajo central)
+    $host = getenv('MYSQLHOST'); 
     $user = getenv('MYSQLUSER');
     $pass = getenv('MYSQLPASSWORD');
     $db   = getenv('MYSQLDATABASE');
     $port = getenv('MYSQLPORT');
 
     $conexion = new mysqli($host, $user, $pass, $db, $port);
+    // ... resto del código
 
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
