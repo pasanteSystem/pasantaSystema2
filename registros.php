@@ -66,7 +66,7 @@ if ($conexion->connect_error) {
     // 1. Consulta a la base de datos
     $sql = "SELECT r.*, d.depart 
         FROM registros r 
-        LEFT JOIN departam.departamento d ON r.id_departamento = d.id 
+        LEFT JOIN departamento d ON r.id_departamento = d.id 
         ORDER BY r.fecha_registro DESC";
     $resultado = $conexion->query($sql);
     $totalRegistros = $resultado->num_rows;
@@ -178,11 +178,12 @@ if ($conexion->connect_error) {
             <label>Departamento:</label>
 <select id="edit_depto" name="departamento">
     <?php 
-    $conexion2 = new mysqli("localhost", "root", "", "departam");
-    $resultado2 = $conexion2->query("SELECT id, depart FROM departamento ORDER BY depart ASC");
-    while($row_dep = $resultado2->fetch_assoc()) {
-        // El value DEBE ser el ID
-        echo "<option value='".$row_dep['id']."'>".$row_dep['depart']."</option>";
+    $resultado2 = $conexion->query("SELECT id, depart FROM departamento ORDER BY depart ASC");
+    if ($resultado2 && $resultado2->num_rows > 0) {
+        while($row_dep = $resultado2->fetch_assoc()) {
+            // El value DEBE ser el ID
+            echo "<option value='".$row_dep['id']."'>".$row_dep['depart']."</option>";
+        }
     }
     ?>
 </select>
@@ -191,13 +192,13 @@ if ($conexion->connect_error) {
             <select id="edit_sucursal" name="sucursal" style="width:100%; margin-bottom:15px; padding:10px; border: 1px solid #e2e8f0; border-radius: 6px; background: white;">
                 <option value="">Seleccione Departamento...</option>
                 <?php 
-                $conexion3 = new mysqli("localhost", "root", "", "registroscarnet");
                 $sql3 = "SELECT sucurs FROM sucursales ORDER BY sucurs ASC";
-                $resultado3 = $conexion3->query($sql3);
-                while($row_suc = $resultado3->fetch_assoc()) {
-                    echo "<option value='".$row_suc['sucurs']."'>".$row_suc['sucurs']."</option>";
+                $resultado3 = $conexion->query($sql3);
+                if ($resultado3 && $resultado3->num_rows > 0) {
+                    while($row_suc = $resultado3->fetch_assoc()) {
+                        echo "<option value='".$row_suc['sucurs']."'>".$row_suc['sucurs']."</option>";
+                    }
                 }
-                $conexion3->close();
                 ?>
             </select>
 
@@ -217,6 +218,4 @@ if ($conexion->connect_error) {
 </body>
 </html>
 
-<?php
-$servidor = "localhost";
-?>
+ 

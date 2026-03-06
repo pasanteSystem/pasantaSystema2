@@ -13,16 +13,14 @@ if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-$conexion = new mysqli($servidor, $user, $pass, $db);
-
-if ($conexion->connect_error) { die("Error: " . $conexion->connect_error); }
+ 
 
 // Obtener todas las sucursales para las pestañas
 $sql_sucursales = "SELECT sucurs FROM sucursales ORDER BY sucurs ASC";
-// Unimos la tabla registros con la tabla departamento de la otra base de datos
+// Unimos la tabla registros con la tabla departamento de la otra b ase de datos
 $sql = "SELECT r.*, d.depart 
         FROM registros r 
-        LEFT JOIN departam.departamento d ON r.id_departamento = d.id 
+        LEFT JOIN departamento d ON r.id_departamento = d.id 
         ORDER BY r.id DESC";
 
 // 2. Ejecutamos la consulta una sola vez
@@ -136,6 +134,4 @@ $res_sucursales = $conexion->query($sql_sucursales);
 </body>
 </html>
 
-<?php
-$servidor = "localhost";
-?>
+ 
