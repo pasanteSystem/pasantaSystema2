@@ -1,0 +1,274 @@
+:root {
+    --main-border: #2d3436;
+    --bg-color: #f4f7f6;
+    --accent-color: #2b90d3;
+    --text-color: #2d3436;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-image: url("imagenes/fondo1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navegador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    height: 65px;
+    height: auto;
+    /* Permite que crezca si los elementos se apilan */
+    padding: 10px 20px;
+    flex-wrap: wrap;
+}
+
+.nave {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 15px;
+    height: 65px;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.3s;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.nave:hover {
+    background: var(--accent-color);
+}
+
+/* logo sercoinfal */
+.nav-central .logo-text {
+    margin-right: 200px;
+    letter-spacing: 4px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* todo para ventana emergente , PRIMERA Y TERCERA*/
+#ventana,
+#ventana3,
+#ventana4 {
+    display: none;
+}
+
+.ventanaModal,
+.ventanaModal3,
+.ventanaModal4 {
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.cerrarr {
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    flex-direction: column;
+    width: 80%;
+    height: 90%;
+}
+
+#ventana:checked~.ventanaModal,
+#ventana3:checked~.ventanaModal3,
+#ventana4:checked~.ventanaModal4 {
+    display: flex;
+}
+
+/* todo para ventana2 emergente2*/
+#ventana2 {
+    display: none;
+}
+
+.ventanaModal2 {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#ventana2:checked~.ventanaModal2 {
+    display: flex;
+}
+
+.botonCerrar2 {
+    width: 100%;
+    padding-right: 29px;
+    margin-top: 470px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.botonCerrar2 label {
+    text-align: center;
+    width: 80px;
+    padding: 5px;
+    background-color: rgb(70, 143, 226);
+    color: white;
+    cursor: pointer;
+    transition: all 300ms ease;
+    border-radius: 20PX;
+}
+
+.botonCerrar label:hover {
+    background-color: var(--accent-color);
+}
+
+/* CONTENEDOR DE TARJETAS */
+.container {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    padding: 20px;
+    gap: 100px;
+}
+
+.contentImg {
+    margin-top: 100px;
+
+}
+
+.img1 {
+    opacity: 0.2;
+    margin: 0px;
+    padding: 0px;
+    height: 500px;
+    width: 500px;
+    border-radius: 80px;
+}
+
+.footer-interfaz {
+    display: flex;
+    background-color: #000000;
+    height: 60px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: white;
+    gap: 20px;
+}
+
+/* DOMENCIONES DE LA VENTAN EMERGENTE*/
+.registroForm {
+    width: 95%;
+    max-width: 1400px;
+    height: 90%;
+    max-height: 1400px;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+}
+
+.imframRegistro {
+    width: 1300px;
+    height: 890px;
+    border-radius: 30px;
+    position: relative;
+}
+
+
+/* 1. Ocultamos la lista por defecto */
+
+.nomover {
+    position: relative;
+
+}
+
+
+.nav-derecho .nomover ul {
+    display: none;
+    position: absolute;
+    top: 65px;
+    /* Altura de tu navegador */
+    right: 0;
+    background: white;
+    min-width: 200px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 15px 15px;
+    list-style: none;
+    padding: 0;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+/* 2. Cuando pasamos el ratón por el LABEL, mostramos el UL que está justo después (+) */
+
+.nav-derecho .nomover li {
+    position: relative;
+    margin: 0px;
+    height: 100%;
+    padding: 0px;
+    border-radius: 15px;
+    width: 190px;
+}
+
+.nav-derecho .nomover ul.activo {
+    display: block;
+}
+
+.desplegable {
+    width: 200px;
+    height: 300px;
+    border: none;
+    display: block;
+}
+
+/*fecha en footer*/
+
+.botonCerrar {
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    background: #ff4d4d;
+    padding: 5px 15px;
+    border-radius: 5px;
+
+}
+
+.botonCerrar:hover {
+    background-color: #da2100;
+}
+
+/*  VENTANA NUMERO 3 SIBRE LA GUARDA DE CARNET*/
+
+.listaCarnet {
+    border-radius: 15px;
+    height: 850px;
+    width: 1300px;
+
+}
+
+.iframtemas {
+    background: none;
+}

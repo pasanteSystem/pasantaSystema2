@@ -1,0 +1,252 @@
+:root {
+    --primary: #0f172a;
+    --accent: #2563eb;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --bg: #f8fafc;
+    --border: #e2e8f0;
+}
+
+html,
+body {
+    height: 91%;
+    margin: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg);
+    flex-direction: column;
+    color: var(--text-main);
+    margin: 0;
+    padding: 30px;
+    display: flex;
+
+}
+
+
+
+/* BARRA DEL ENCABEZADO */
+
+.inventarioPrincipal {
+    max-width: 1400px;
+    margin: auto;
+    flex: 1;
+}
+
+.inventorio {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    /* --- NUEVAS PROPIEDADES PARA FIJAR --- */
+    position: sticky;
+    top: 0;
+    background-color: var(--bg);
+    /* Importante para que no se vea el texto pasando por debajo */
+    z-index: 100;
+    padding-top: 10px;
+    /* Espacio extra para que no pegue al borde superior */
+}
+
+
+.encabezado h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.encabezado p {
+    margin: 5px 0 0;
+    color: var(--text-muted);
+}
+
+/* BUSQUEDA */
+.headerBusqueda {
+    display: flex;
+    gap: 15px;
+}
+
+.busqueda {
+    position: relative;
+    width: 350px;
+}
+
+.busqueda i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.busqueda input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+}
+
+.busqueda input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* Estilo para las letras resaltadas */
+.highlight {
+    background-color: #226cb3;
+    color: #000;
+    padding: 0 2px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+
+/* Mejora la visibilidad del input cuando se busca */
+.busqueda input:focus {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* TABLA*/
+.tablacComp {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    max-height: 70vh;
+    /* La tabla ocupará el 70% de la altura de la pantalla */
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+}
+
+th {
+    background: #f1f5f9;
+    padding: 15px;
+    text-align: center;
+    /* Cambiado a center para que coincida con tus td */
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+
+    /* --- PROPIEDADES CORREGIDAS --- */
+    position: sticky;
+    top: 0;
+    /* <--- ESTO ES VITAL */
+    z-index: 100;
+    /* Mayor prioridad para que nada pase por encima */
+    box-shadow: inset 0 -1px 0 var(--border);
+}
+
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.user-img-placeholder {
+    width: 40px;
+    height: 40px;
+    background: #cbd5e1;
+    border-radius: 50%;
+}
+
+.badge-id {
+    background: #eff6ff;
+    color: var(--accent);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.textObser {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* BOTONES*/
+.btn-icon {
+    background: none;
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.edit:hover {
+    background: #dcfce7;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+.delete:hover {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+.buscar {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/*FOOTERRRRRRRR*/
+
+.footer {
+    margin-top: 20px;
+    text-align: right;
+    color: var(--text-muted);
+}
+
+
+
+/* Estilo para la fila que separa los meses */
+
+
+
+.row-mes-separador td {
+
+    background-color: #f8fafc;
+    /* Color gris muy claro */
+    text-align: left;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: var(--accent);
+    border-left: 4px solid var(--accent);
+    /* Una línea azul a la izquierda */
+    border-bottom: 2px solid var(--border);
+}
+
+/* Evitar que el buscador resalte el texto del separador de mes */
+.row-mes-separador mark {
+
+    background: none;
+    color: inherit;
+}
+
+.totalRegistros {
+    top: 0px;
+    color: rgb(48, 48, 48);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+}

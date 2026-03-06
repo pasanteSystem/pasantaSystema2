@@ -1,0 +1,73 @@
+:root {
+    --azul-oscuro: #1a3a6d;
+    --azul-claro: #2563eb;
+    --blanco: #ffffff;
+    --gris-fondo: #f1f5f9;
+}
+
+body {
+    background-image: url("fondo/fondo.png");
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background: var(--blanco);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    text-align: center;
+    color: var(--azul-oscuro);
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    box-sizing: border-box; /* Evita que el input se salga del contenedor */
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--azul-oscuro);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background-color: var(--azul-claro);
+}
+
+.error-msg {
+    color: #e11d48;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 15px;
+}

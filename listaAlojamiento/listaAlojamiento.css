@@ -1,0 +1,503 @@
+ :root {
+     --azul-corporativo: #1a3a6d;
+     --azul-lineas: #2c5ca0;
+     --ancho-carnet: 4.9cm;
+     --alto-carnet: 7.7cm;
+     --bg: #f8fafc;
+     --border: #e2e8f0;
+ }
+
+
+ body {
+     background-color: #e2e8f0;
+     margin: 0;
+     padding: 20px;
+     font-family: 'Helvetica', Arial, sans-serif;
+     display: flex;
+     height: 100vh;
+     overflow: hidden;
+     flex-direction: column;
+ }
+
+ .highlight {
+     background-color: #226cb3;
+     color: #000;
+     padding: 0 2px;
+     border-radius: 2px;
+     font-weight: bold;
+ }
+
+ .inventarioPrincipal {
+     display: flex;
+     justify-content: center;
+     max-width: 1200px;
+     margin: auto;
+     flex: 1;
+ }
+
+ .inventorio {
+     width: 92%;
+     display: flex;
+     margin: 0 auto 25px auto;
+     justify-content: space-between;
+     align-items: center;
+     margin-bottom: 25px;
+     padding: 20px;
+     background-color: #e2e8f0;
+     border-bottom: solid 2px rgb(87, 78, 78);
+     position: sticky;
+     top: 0;
+     z-index: 100;
+     padding-top: 10px;
+     border-radius: 0px 0px 15px 15px;
+     max-width: none;
+     flex-shrink: 0;
+ }
+
+
+ .encabezado h1 {
+     margin: 0;
+     font-size: 1.5rem;
+     color: var(--primary);
+ }
+
+ .encabezado p {
+     margin: 5px 0 0;
+     color: var(--text-muted);
+ }
+
+ /* BUSQUEDA */
+ .headerBusqueda {
+     display: flex;
+     gap: 40px;
+
+ }
+
+ .busqueda {
+     position: relative;
+     width: 320px;
+     transform: translateX(-20%);
+ }
+
+ .busqueda i {
+     position: absolute;
+     left: 50px;
+     top: 50%;
+     transform: translateY(-50%);
+     color: var(--text-muted);
+ }
+
+ .busqueda input {
+     border: none;
+     width: 100%;
+     padding: 10px 10px 10px 40px;
+     border-radius: 8px;
+     font-size: 1.0rem;
+     transition: border-color 0.9s;
+     border-right: 4px solid #000000;
+ }
+
+ .busqueda input:focus {
+     outline: none;
+     border-color: var(--accent);
+ }
+
+
+ .carnet {
+     width: 178px;
+     height: 291px;
+     background-color: white;
+     border-radius: 15px;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+     position: relative;
+     overflow: hidden;
+     display: flex;
+     flex-direction: column;
+     border: 1px solid #ddd;
+     cursor: pointer;
+     transform: scale(1.05);
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+ }
+
+
+
+ .contenedor-galeria {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 40px;
+     justify-content: center;
+     padding: 20px;
+     background-color: white;
+     border-radius: 15px;
+     margin: 30px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+     scrollbar-width: thin;
+     scrollbar-width: 400px;
+     flex-grow: 1;
+     overflow-y: auto;
+     margin-bottom: 70px;
+
+
+ }
+
+ .fondo-patron {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 97%;
+     background-size: cover;
+     background-position: center;
+     background-image: url('imagenes/fondo2.jpg');
+ }
+
+ #colaImpresion {
+     display: flex !important;
+     flex-direction: row !important;
+     /* Parejas una al lado de otra */
+     flex-wrap: wrap;
+     gap: 15px;
+     /* Espacio entre cada carnet completo */
+     justify-content: flex-start;
+ }
+
+ .carnet.clonado {
+     margin: 0 !important;
+     box-shadow: none !important;
+     border: 0.5pt solid #000 !important;
+     /* Borde fino para corte */
+ }
+
+ .foto-box {
+     position: relative;
+     z-index: 2;
+     top: 80px;
+     margin: 10px auto 0;
+     width: 99px;
+     height: 110px;
+     background-color: #f8f9fa;
+     border: 4px solid var(--azul-lineas);
+     justify-content: center;
+     align-items: center;
+     box-sizing: border-box;
+     overflow: hidden;
+ }
+
+ .foto-box img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+
+ .datos-empleado {
+     top: 40px;
+     margin-top: 37px;
+     position: relative;
+     z-index: 2;
+     padding: 0px 0px;
+     flex-grow: 1;
+
+ }
+
+ .campo {
+     margin-bottom: 0.5px;
+     display: flex;
+     flex-direction: column;
+ }
+
+ .campo2 {
+     margin-bottom: 0.5px;
+     text-align: center;
+ }
+
+ .valor {
+     text-align: center;
+     font-size: 12px;
+     color: #333;
+     font-weight: 600;
+     padding: 1px 0;
+     min-height: 9px;
+ }
+
+
+ .footerr {
+     top: 0px;
+     position: relative;
+     z-index: 2;
+     background-color: var(--azul-corporativo);
+     color: white;
+     text-align: center;
+     padding: 5px 0;
+     font-size: 10px;
+     font-weight: bold;
+     letter-spacing: 1px;
+ }
+
+ .carnet-trasero p {
+     padding: 2px;
+     margin: 5px;
+     font-size: 8.8px;
+     line-height: 1.1;
+     text-align: center;
+ }
+
+ .carnet-trasero footer {
+     color: white;
+     font-weight: 600;
+     display: flex;
+     text-align: center;
+     align-items: center;
+     justify-content: center;
+     background-color: rgb(19, 59, 172);
+     height: 15px;
+     width: 100%;
+     margin: 0px;
+     margin-top: auto;
+     font-size: 10px;
+     padding: 5px;
+
+ }
+
+ /* Efecto visual al seleccionar en la pantalla */
+ .carnet.seleccionado {
+     border: 3px solid #2563eb !important;
+     box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+     transform: scale(1.02);
+ }
+
+ /* Estilos para las pestañas de sucursales */
+ .tabs-container {
+     display: flex;
+     justify-content: center;
+     gap: 5px;
+     padding: 10px;
+     background: white;
+     margin: 0 30px 10px 30px;
+     border-radius: 10px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     flex-wrap: wrap;
+ }
+
+ .tab-btn {
+     padding: 8px 15px;
+     border: none;
+     background: transparent;
+     color: var(--azul-corporativo);
+     cursor: pointer;
+     font-weight: bold;
+     transition: all 0.3s;
+     text-transform: uppercase;
+     font-size: 0.8rem;
+ }
+
+ .tab-btn:hover {
+     background: #e2e8f0;
+ }
+
+ .tab-btn.active {
+     background: var(--azul-corporativo);
+     color: white;
+ }
+
+ /* 1. OCULTAR EN PANTALLA */
+ .solo-impresion {
+     display: none !important;
+ }
+
+ /* 2. CONFIGURACIÓN PARA IMPRESIÓN */
+ /* --- ESTILO PARA PANTALLA --- */
+ /* Ocultamos el carnet trasero mientras el usuario selecciona en la galería */
+ .solo-impresion {
+     display: none !important;
+ }
+
+
+
+
+
+
+ .acciones-flotantes {
+     position: fixed;
+     bottom: 20px;
+     right: 20px;
+     display: flex;
+     gap: 10px;
+ }
+
+ .btn-accion {
+     padding: 10px 15px;
+     border: none;
+     border-radius: 8px;
+     cursor: pointer;
+     font-weight: bold;
+     color: white;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+     transition: 0.3s;
+ }
+
+ .btn-deshacer {
+     background-color: #f59e0b;
+     /* Naranja */
+ }
+
+ .btn-limpiar {
+     background-color: #ef4444;
+     /* Rojo */
+ }
+
+ .btn-accion:hover {
+     transform: scale(1.05);
+     opacity: 0.9;
+ }
+
+
+
+
+
+
+ /* --- ESTILO PARA IMPRESIÓN --- */
+ @media print {
+     @page {
+         size: landscape;
+         margin: 0.2cm;
+         /* Margen mínimo para aprovechar espacio */
+     }
+
+     .acciones-flotantes {
+         display: none !important;
+     }
+
+     /* Ocultar elementos de la web */
+     body {
+         background: white !important;
+         padding: 0 !important;
+     }
+
+     .contenedor-galeria {
+         box-shadow: none;
+         border: none;
+     }
+
+     .inventorio,
+     .tabs-container,
+     .btn-imprimir-flotante,
+     .nombre-etiqueta,
+     .text-fecha {
+         display: none !important;
+     }
+
+     /* Contenedor de carnets */
+     .contenedor-galeria {
+         display: flex !important;
+         flex-direction: row !important;
+         flex-wrap: wrap !important;
+         gap: 8px !important;
+         /* Espacio pequeño entre columnas */
+         justify-content: flex-start !important;
+         padding: 0 !important;
+     }
+
+     /* Solo mostramos los bloques que tienen un carnet seleccionado */
+     .bloque-completo-carnet {
+         display: none !important;
+     }
+
+     .bloque-completo-carnet:has(.carnet.seleccionado) {
+         display: flex !important;
+         flex-direction: column !important;
+         /* Frente arriba, Trasero abajo */
+         width: 180px !important;
+         /* Ajuste para que quepan 5 en una hoja horizontal */
+         page-break-inside: avoid;
+     }
+
+     /* HACEMOS VISIBLE EL TRASERO SOLO AQUÍ */
+     .solo-impresion {
+         display: flex !important;
+         position: relative !important;
+     }
+
+     /* Ajuste de medidas del carnet para impresión masiva */
+     .carnet {
+         width: 178px !important;
+         height: 288px !important;
+         border: 0.5px solid #000 !important;
+         box-shadow: none !important;
+         margin-bottom: 5px !important;
+         transform: none !important;
+     }
+
+     /* Ajustar fuentes e imágenes internas para la escala de impresión */
+     .foto-box {
+         top: 80px !important;
+         width: 90px !important;
+         height: 105px !important;
+     }
+
+     .datos-empleado {
+         top: 38px !important;
+     }
+
+     .valor {
+         font-size: 11px !important;
+     }
+
+     .footerr {
+         padding: 5px 0 !important;
+         font-size: 9px !important;
+     }
+ }
+
+ /* Estenedor del carnet y su nombre */
+ .bloque-completo-carnet {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     margin-bottom: 25px;
+     background-color: white;
+ }
+
+ .bloque-completo-carnet:hover {
+     border-radius: 15px;
+     transform: translateY(-10px);
+     transform: scale(1.05);
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+     background-color: #e2e8f0;
+ }
+
+ /* Nombre que aparece debajo */
+ .nombre-etiqueta {
+     margin-top: 10px;
+     font-size: 14px;
+     font-weight: bold;
+     color: #000000;
+     font-family: Arial, sans-serif;
+     text-transform: uppercase;
+     background-color: #8be8ff;
+     padding: 4px;
+     border-radius: 10px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+ }
+
+ /* Botón de imprimir azul flotante */
+ .btn-imprimir-flotante {
+     bottom: 20px;
+     right: 20px;
+     padding: 12px 20px;
+     background-color: #2563eb;
+     color: white;
+     border: none;
+     border-radius: 30px;
+     cursor: pointer;
+     font-weight: bold;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+     z-index: 9999;
+ }
+
+ /* Estilo visual de carnet seleccionado */
+ .carnet.seleccionado {
+     border: 4px solid #2563eb !important;
+     box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+     transform: scale(1.03);
+ }
