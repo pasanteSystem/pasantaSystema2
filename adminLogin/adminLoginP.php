@@ -11,7 +11,6 @@ if (isset($_POST['listo'])) {
     $port = getenv('MYSQLPORT');
 
     $conexion = new mysqli($host, $user, $pass, $db, $port);
-    // ... resto del código
 
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
