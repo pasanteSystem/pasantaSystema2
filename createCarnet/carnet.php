@@ -14,8 +14,6 @@ if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }
 
-
-
 date_default_timezone_set('America/Caracas');
 
 // --- PROCESAMIENTO DE DATOS ---
@@ -34,12 +32,12 @@ if (isset($_POST['enviar'])) {
     $temp_imagen = $_FILES['foto']['tmp_name'] ?? '';
     $carpeta_destino = 'uploads/';
 
-    // 1. VALIDACIÓN
+    // 1. VALIDACIÓN - evitar ficha duplicada
     $consulta_verificar = "SELECT fichaSPI FROM registros WHERE fichaSPI = '$ficha' LIMIT 1";
-    $resultado_verificar = mysqli_query($conexion2, $consulta_verificar);
+    $resultado_verificar = mysqli_query($conexion, $consulta_verificar);
 
     if (mysqli_num_rows($resultado_verificar) > 0) {
-        echo "ERROR_DUPLICADO"; // Enviamos un código simple
+        echo "ERROR_DUPLICADO";
         exit;
     }
 
@@ -55,15 +53,15 @@ if (isset($_POST['enviar'])) {
     }
 
     // 3. GUARDAR
-   $insertarDatos = "INSERT INTO registros (fichaSPI, nombre, cedula, id_departamento, cargo, sucursal, observaciones, foto, fecha_registro) 
+    $insertarDatos = "INSERT INTO registros (fichaSPI, nombre, cedula, id_departamento, cargo, sucursal, observaciones, foto, fecha_registro) 
                   VALUES ('$ficha', '$nombre $apellido', '$cedula', '$departamento', '$cargo', '$sucursal', '$observ', '$sql_foto', '$fecha')";
     $sql_alojamiento = "INSERT INTO alojamiento_carnets (nombre_completo, cedula, departamento, foto_ruta) VALUES ('$nombre $apellido', '$cedula', '$departamento', '$sql_foto')";
 
-    if (mysqli_query($conexion2, $insertarDatos) && mysqli_query($conexion2, $sql_alojamiento)) {
-        echo "OK"; // Solo texto plano
+    if (mysqli_query($conexion, $insertarDatos) && mysqli_query($conexion, $sql_alojamiento)) {
+        echo "OK";
         exit;
     } else {
-        echo "ERROR_SQL: " . mysqli_error($conexion2);
+        echo "ERROR_SQL: " . mysqli_error($conexion);
         exit;
     }
 }
@@ -116,13 +114,12 @@ if (isset($_POST['enviar'])) {
                 <select id="departamento" name="departamento" required>
     <option value="">Seleccione...</option>
     <?php 
-    // Asegúrate de que la conexión sea a la base de datos correcta
-    $db_dept = new mysqli($servidor, $user, $pass, "registroscarnet"); // Usa tu BD principal
-    $res_dept = $db_dept->query("SELECT id_departamento, depart FROM departamentos"); 
-    
-    while($row = $res_dept->fetch_assoc()) {
-        // El 'value' debe ser el ID numérico para que la relación (FK) no falle
-        echo "<option value='".$row['id_departamento']."'>".$row['depart']."</option>";
+    // Carga departamentos desde la conexión Railway
+    $res_dept = $conexion->query("SELECT id_departamento, depart FROM departamentos ORDER BY depart ASC"); 
+    if ($res_dept && $res_dept->num_rows > 0) {
+        while($row = $res_dept->fetch_assoc()) {
+            echo "<option value='".$row['id_departamento']."'>".$row['depart']."</option>";
+        }
     }
     ?>
 </select>
@@ -138,9 +135,11 @@ if (isset($_POST['enviar'])) {
                 <select name="sucursal" id="textSucursal" class="sucursal" required>
                     <option value="">Seleccione...</option>
                     <?php 
-                    $res_suc = $conexion2->query("SELECT sucurs FROM sucursales");
-                    while($row = $res_suc->fetch_assoc()) {
-                        echo "<option value='".$row['sucurs']."'>".$row['sucurs']."</option>";
+                    $res_suc = $conexion->query("SELECT sucurs FROM sucursales ORDER BY sucurs ASC");
+                    if ($res_suc && $res_suc->num_rows > 0) {
+                        while($row = $res_suc->fetch_assoc()) {
+                            echo "<option value='".$row['sucurs']."'>".$row['sucurs']."</option>";
+                        }
                     }
                     ?>
                 </select>
@@ -148,7 +147,7 @@ if (isset($_POST['enviar'])) {
 
             <div class="grupoInput full-width">
                 <label>Observaciones</label>
-                <textarea name="observ" rows="3" placeholder="Notas adicionales..." oninput="document.getElementById('miIframe').contentWindow.actualizar()" ></textarea>
+                <textarea name="observ" rows="3" placeholder="Notas adicionales..." oninput="document.getElementById('miIframe').contentWindow.actualizar()"></textarea>
             </div>
         </div>
 
@@ -166,7 +165,3 @@ if (isset($_POST['enviar'])) {
 <script src="evitarRecargaPagina.js"></script>
 </body>
 </html>
-
-<?php
-$servidor = "localhost";
-?>

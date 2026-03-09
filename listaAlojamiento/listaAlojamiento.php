@@ -20,7 +20,7 @@ $sql_sucursales = "SELECT sucurs FROM sucursales ORDER BY sucurs ASC";
 // Unimos la tabla registros con la tabla departamento de la otra base de datos
 $sql = "SELECT r.*, d.depart 
         FROM registros r 
-        LEFT JOIN departamento d ON r.id_departamento = d.id 
+        LEFT JOIN departamentos d ON r.id_departamento = d.id_departamento 
         ORDER BY r.id DESC";
 
 // 2. Ejecutamos la consulta una sola vez
