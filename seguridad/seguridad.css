@@ -70,3 +70,16 @@
 .botonGuardar:hover {
     background-color: #1e6fa3;
 }
+
+/* =============================================
+   RESPONSIVE - MÓVIL (max 480px)
+   ============================================= */
+@media (max-width: 480px) {
+    .password-card {
+        padding: 18px;
+    }
+
+    .container-password {
+        padding: 10px;
+    }
+}

@@ -63,3 +63,38 @@ button:hover {
     height: 30px;
 
 }
+
+/* =============================================
+   RESPONSIVE - MÓVIL (max 768px)
+   ============================================= */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        padding: 12px;
+    }
+
+    .container2 {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .container {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* =============================================
+   RESPONSIVE - MÓVIL PEQUEÑO (max 480px)
+   ============================================= */
+@media (max-width: 480px) {
+    .container {
+        padding: 12px;
+    }
+
+    input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

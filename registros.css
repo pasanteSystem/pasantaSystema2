@@ -250,3 +250,69 @@ td {
     border-radius: 8px;
     font-weight: 600;
 }
+
+/* =============================================
+   RESPONSIVE - TABLET (max 1024px)
+   ============================================= */
+@media (max-width: 1024px) {
+    body {
+        padding: 15px;
+    }
+
+    .busqueda {
+        width: 260px;
+    }
+}
+
+/* =============================================
+   RESPONSIVE - MÓVIL (max 768px)
+   ============================================= */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .inventorio {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        position: static;
+        /* No sticky en móvil, evita bugs */
+    }
+
+    .headerBusqueda {
+        width: 100%;
+    }
+
+    .busqueda {
+        width: 100%;
+    }
+
+    .encabezado h1 {
+        font-size: 1.2rem;
+    }
+
+    .footer {
+        text-align: center;
+    }
+}
+
+/* =============================================
+   RESPONSIVE - MÓVIL PEQUEÑO (max 480px)
+   ============================================= */
+@media (max-width: 480px) {
+    .encabezado h1 {
+        font-size: 1rem;
+    }
+
+    .buscar {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+
+    td,
+    th {
+        padding: 10px 8px;
+        font-size: 0.8rem;
+    }
+}

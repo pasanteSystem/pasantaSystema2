@@ -501,3 +501,99 @@
      box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
      transform: scale(1.03);
  }
+
+ /* =============================================
+   RESPONSIVE - TABLET (max 1024px)
+   ============================================= */
+ @media (max-width: 1024px) {
+     .inventorio {
+         width: 98%;
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 10px;
+     }
+
+     .busqueda {
+         width: 100%;
+         transform: none;
+     }
+
+     .contenedor-galeria {
+         margin: 10px;
+         gap: 25px;
+     }
+ }
+
+ /* =============================================
+   RESPONSIVE - MÓVIL (max 768px)
+   ============================================= */
+ @media (max-width: 768px) {
+     body {
+         padding: 10px;
+         height: auto;
+         overflow: auto;
+     }
+
+     .inventorio {
+         flex-direction: column;
+         align-items: flex-start;
+         gap: 8px;
+         padding: 12px;
+         position: static;
+     }
+
+     .busqueda {
+         width: 100%;
+         transform: none;
+     }
+
+     .busqueda input {
+         font-size: 0.9rem;
+     }
+
+     .contenedor-galeria {
+         margin: 8px;
+         gap: 20px;
+         padding: 12px;
+         margin-bottom: 80px;
+     }
+
+     .acciones-flotantes {
+         bottom: 10px;
+         right: 10px;
+         gap: 6px;
+     }
+
+     .btn-accion,
+     .btn-imprimir-flotante {
+         padding: 8px 12px;
+         font-size: 0.85rem;
+     }
+
+     .filter-container {
+         padding: 0 8px;
+     }
+
+     .encabezado h1 {
+         font-size: 1.2rem;
+     }
+ }
+
+ /* =============================================
+   RESPONSIVE - MÓVIL PEQUEÑO (max 480px)
+   ============================================= */
+ @media (max-width: 480px) {
+     .carnet {
+         width: 155px;
+         height: 255px;
+     }
+
+     .foto-box {
+         width: 85px;
+         height: 95px;
+     }
+
+     .contenedor-galeria {
+         gap: 12px;
+     }
+ }

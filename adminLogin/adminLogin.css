@@ -19,7 +19,7 @@ body {
     background: var(--blanco);
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
 }
@@ -46,7 +46,8 @@ h2 {
     padding: 12px;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
-    box-sizing: border-box; /* Evita que el input se salga del contenedor */
+    box-sizing: border-box;
+    /* Evita que el input se salga del contenedor */
 }
 
 .btn-login {
@@ -70,4 +71,18 @@ h2 {
     font-size: 14px;
     text-align: center;
     margin-top: 15px;
+}
+
+/* =============================================
+   RESPONSIVE - MÓVIL (max 480px)
+   ============================================= */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 25px 18px;
+        margin: 0 10px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
 }
