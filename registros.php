@@ -66,7 +66,7 @@ if ($conexion->connect_error) {
     // 1. Consulta a la base de datos
     $sql = "SELECT r.*, d.depart 
         FROM registros r 
-        LEFT JOIN departamento d ON r.id_departamento = d.id 
+        LEFT JOIN departamentos d ON r.id_departamento = d.id_departamento 
         ORDER BY r.fecha_registro DESC";
     $resultado = $conexion->query($sql);
     $totalRegistros = $resultado->num_rows;
@@ -178,11 +178,11 @@ if ($conexion->connect_error) {
             <label>Departamento:</label>
 <select id="edit_depto" name="departamento">
     <?php 
-    $resultado2 = $conexion->query("SELECT id, depart FROM departamento ORDER BY depart ASC");
+    $resultado2 = $conexion->query("SELECT id_departamento, depart FROM departamentos ORDER BY depart ASC");
     if ($resultado2 && $resultado2->num_rows > 0) {
         while($row_dep = $resultado2->fetch_assoc()) {
             // El value DEBE ser el ID
-            echo "<option value='".$row_dep['id']."'>".$row_dep['depart']."</option>";
+            echo "<option value='".$row_dep['id_departamento']."'>".$row_dep['depart']."</option>";
         }
     }
     ?>

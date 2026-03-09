@@ -23,11 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 1. BUSCAR EL NOMBRE DEL DEPARTAMENTO
     // Necesitamos el texto (ej: "Sistemas") para la tabla de alojamiento
-    $conn_dep = new mysqli("localhost", "root", "", "departam");
-    $res_dep = $conn_dep->query("SELECT depart FROM departamento WHERE id = '$depto_id'");
+    $res_dep = $conexion->query("SELECT depart FROM departamentos WHERE id_departamento = '$depto_id'");
     $row_dep = $res_dep->fetch_assoc();
     $nombre_departamento_texto = $row_dep['depart'] ?? 'Sin Depto';
-    $conn_dep->close();
 
     // ... (lógica de la foto igual) ...
 

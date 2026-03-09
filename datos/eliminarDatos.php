@@ -16,31 +16,31 @@ if(isset($_GET['id'])) {
     $id = intval($_GET['id']);
 
     // 1. Eliminamos el registro
-    $sql_delete = "DELETE FROM departamento WHERE id = $id";
+    $sql_delete = "DELETE FROM departamentos WHERE id_departamento = $id";
 
     if ($conexion->query($sql_delete)) {
         
         // --- PROCESO FORZADO DE REENUMERACIÓN ---
 
         // A. Quitar la propiedad AUTO_INCREMENT temporalmente para poder modificar los IDs
-        $conexion->query("ALTER TABLE departamento MODIFY id INT NOT NULL");
+        $conexion->query("ALTER TABLE departamentos MODIFY id_departamento INT NOT NULL");
 
         // B. Quitar la llave primaria temporalmente
-        $conexion->query("ALTER TABLE departamento DROP PRIMARY KEY");
+        $conexion->query("ALTER TABLE departamentos DROP PRIMARY KEY");
 
         // C. Reiniciar el contador y reasignar IDs en orden
         $conexion->query("SET @count = 0");
-        $conexion->query("UPDATE departamento SET id = (@count := @count + 1)");
+        $conexion->query("UPDATE departamentos SET id_departamento = (@count := @count + 1)");
 
         // D. Volver a poner la llave primaria y el AUTO_INCREMENT
-        $conexion->query("ALTER TABLE departamento ADD PRIMARY KEY (id)");
-        $conexion->query("ALTER TABLE departamento MODIFY id INT NOT NULL AUTO_INCREMENT");
+        $conexion->query("ALTER TABLE departamentos ADD PRIMARY KEY (id_departamento)");
+        $conexion->query("ALTER TABLE departamentos MODIFY id_departamento INT NOT NULL AUTO_INCREMENT");
 
         // E. Ajustar el siguiente número inicial del AUTO_INCREMENT
-        $resultado = $conexion->query("SELECT MAX(id) AS max_id FROM departamento");
+        $resultado = $conexion->query("SELECT MAX(id_departamento) AS max_id FROM departamentos");
         $fila = $resultado->fetch_assoc();
         $proximo_id = ($fila['max_id'] ? $fila['max_id'] : 0) + 1;
-        $conexion->query("ALTER TABLE departamento AUTO_INCREMENT = $proximo_id");
+        $conexion->query("ALTER TABLE departamentos AUTO_INCREMENT = $proximo_id");
 
         $conexion->close();
         header("Location: datos.php?mensaje=eliminado");

@@ -17,7 +17,7 @@ if ($conexion->connect_error) {
 
 // Obtener todas las sucursales para las pestañas
 $sql_sucursales = "SELECT sucurs FROM sucursales ORDER BY sucurs ASC";
-// Unimos la tabla registros con la tabla departamento de la otra b ase de datos
+// Unimos la tabla registros con la tabla departamento de la otra base de datos
 $sql = "SELECT r.*, d.depart 
         FROM registros r 
         LEFT JOIN departamento d ON r.id_departamento = d.id 
