@@ -1,4 +1,3 @@
-
 <?php
 require_once '../adminLogin/verificar_sesion.php';
 ?>
